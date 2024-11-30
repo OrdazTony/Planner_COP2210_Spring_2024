@@ -1,15 +1,17 @@
+import java.security.interfaces.RSAKey;
+import java.util.ArrayList;
 
 public class User {
     private String name;
     private int age;
-    private Expenses expenses;
+    private ArrayList<Double[]> FinHistory;
+
 
     public User(String name, int age) {
-
-
         this.name = name;
         this.age = age;
-        this.expenses = new Expenses();
+        this.FinHistory = new ArrayList<>();
+
     }
     public String getName() {
         return name;
@@ -17,10 +19,15 @@ public class User {
     public int getAge() {
         return age;
     }
-
-    public Double[] calculateExpenses() {
-        return expenses.ExpInfo();
+    public ArrayList<Double[]> getFinHistory() {
+        return FinHistory;
     }
+    public void setFinHistory(Double[] finData) {
+        this.FinHistory.add(finData);
+    }
+
+
+
 
 
 
