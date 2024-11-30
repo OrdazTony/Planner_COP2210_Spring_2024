@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Expenses {
     public Double[] ExpInfo() {
-        try (Scanner scnr = new Scanner(System.in)) {
+       Scanner scnr = new Scanner(System.in);
             Double ccp, loans, savings, rent, necTotal, paycheck, remainder, expenses;
 
             System.out.println("What are your credit card payments for the month? ");
@@ -12,7 +12,6 @@ public class Expenses {
             loans = scnr.nextDouble();
             System.out.println("What is your rent payment for the month? ");
             rent = scnr.nextDouble();
-
             System.out.println("What was your last paycheck? ");
             paycheck = scnr.nextDouble();
 
@@ -30,7 +29,6 @@ public class Expenses {
             
             Double[] fininfo = {paycheck, ccp, loans, rent, savings, expenses};
             return fininfo;
-        } 
 
     }
 
