@@ -17,7 +17,8 @@ public class Menu {
             System.out.println("\n--- Main Menu ---");
             System.out.println("1. Create New User");
             System.out.println("2. Show Users");
-            System.out.println("3. Quit Program");
+            System.out.println("3. print financial history: ");
+            System.out.println("4. Quit Program");
             System.out.print("Choose an option: ");
 
             int choice = scnr.nextInt();
@@ -49,7 +50,20 @@ public class Menu {
                 for (int i = 0; i < userList.size(); i++) {
                     System.out.println(userList.users.get(i)); // Print each user
                 }
-            } else {
+            } else if (choice == 3) {
+                System.out.println("Financial histories of users:");
+                for (int i = 0; i < userList.size(); i++) {
+                    User user = userList.users.get(i);
+                    System.out.println("Financial History for " + user.getName() + ":");
+                    for (Double[] history : user.getFinHistory()) {
+                        System.out.println("Paycheck: " + history[0] + ", Savings: " + history[1] + ", Other Expenses: " + history[2]);
+                    }
+                }
+            }
+            else if (choice == 4) {
+                quitProgram();
+            }
+            else {
                 System.out.println("Invalid option. Please try again.");
             }
         }
