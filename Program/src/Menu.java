@@ -1,9 +1,10 @@
 import java.util.Scanner;
+//Menu was implemented by Anthony and John
+//Idea and look of the interface was developed by everyone
 
 public class Menu {
 
     private boolean isRunning;
-
 
     public Menu() {
         isRunning = true;

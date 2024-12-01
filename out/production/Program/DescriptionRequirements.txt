@@ -1,0 +1,25 @@
+Requirement Sheet: Financial Tracker Application
+Project Overview
+The Financial Tracker is an application that helps users manage their personal finances by allowing them to create
+accounts, track expenses and savings, and view detailed financial histories.
+The application provides an interface for users to interact with their financial data conveniently.
+
+1. User Management
+Create New Users:
+The application should allow the creation of new users by accepting input for basic details such as name and age.
+Store User Data:
+Each user's data, including financial history, must be stored in a structured format (e.g., ArrayList).
+
+2. Financial History Tracking
+Add Financial Records:
+Users should be able to add financial transactions, including expenses and savings, as records to their financial
+history.
+Retrieve Financial History:
+Users should be able to view their complete financial history.
+
+3. Display Information
+User Overview:
+The system should provide a clear overview of a user’s financial details, including:
+Total expenses
+Total savings
+Balance (savings - expenses)

@@ -1,6 +1,6 @@
-import java.security.interfaces.RSAKey;
+import java.security.interfaces.RSAKey; //was for future encryption functionality
 import java.util.ArrayList;
-
+//This class was implemented by Anthony
 public class User {
     private String name;
     private int age;

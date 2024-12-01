@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+//This class was implemented by Anthony
 public class UserList {
     public ArrayList<User> users; // List to hold User objects
 

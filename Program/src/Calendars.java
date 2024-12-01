@@ -1,6 +1,6 @@
 import java.util.Date;
 import java.util.GregorianCalendar;
-
+//Calendars was scrapped, it was originally part of a planner app we hoped to build.
 public class Calendars {
     public static void main(String[] args) {
         System.out.println("Display Date:  ");

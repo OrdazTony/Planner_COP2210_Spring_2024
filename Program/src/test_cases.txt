@@ -1,0 +1,11 @@
+Test Case ID |	Test Case Description       | Input Details                                                                 |	Expected Output	                   | Actual Output	                       | Status
+
+TC1  |	Add valid user details and expenses |	Name: Oleg, Age: 18, Credit Card: 200, Loan: 500, Rent: 800, Paycheck: 6000	| Remaining: 4500 Total spending: 1500 | Total spending: 1500, Remaining: 4500 | Pass
+
+TC2  | Calculate discretionary income       |	Paycheck: 6000, Expenses: 1500                                              | Remaining: 4500                      |	Remaining: 4500	                   | Pass
+
+TC3	 | Calculate savings allocation	        | Savings: 2000	                                                                | Remaining discretionary income: 2500 |  Remaining discretionary income: 2500 | Pass
+
+TC4  |	Handle invalid savings input (-)    |	Savings: -1000	                                                            |Error: Invalid savings amount	       |Error: Invalid savings amount	       |Pass
+
+TC5	 |  Handle impossible age scenario      |	Age:150 	                                                                |Error: Age impossible	               |Error: Age impossible	               |Pass
