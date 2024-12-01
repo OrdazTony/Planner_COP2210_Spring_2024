@@ -44,8 +44,6 @@ public class Menu {
                 user.setFinHistory(Expenses.ExpInfo(necTotal));
                 userList.addUser(user);
 
-//               Expenses.ExpInfo(necTotal); //here I will assign
-
             } else if (choice == 2) {
                 System.out.println("List of users:");
                 for (int i = 0; i < userList.size(); i++) {

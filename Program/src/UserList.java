@@ -18,15 +18,4 @@ public class UserList {
     }
 
 
-//    public String username;
-//    public String password;
-//
-//    void setUsername(String username) {
-//        this.username = username;
-//    }
-//    void setPassword(String password) {
-//        this.password = password;
-//    }
-
-
 }
