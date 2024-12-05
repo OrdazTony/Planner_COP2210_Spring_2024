@@ -23,7 +23,7 @@ public class Expenses {
             System.out.println("That leaves you with $" + paycheck + " until your next paycheck.");
         }
 
-        return new Double[] {paycheck, savings, paycheckFinal};
+        return new Double[] {paycheckFinal, savings, paycheck};
 
     }
 
@@ -84,10 +84,6 @@ public class Expenses {
         // Calculate other expenses
         expenses = remainder - savings;
         System.out.printf("That leaves you with $%.2f for other expenses until your next paycheck.%n", expenses);
-        // Error checking
-        if (paycheck < necTotal) {
-            System.out.println("Error: Insufficient income for expenses. Your paycheck must be greater than your total expenses.");
-        }
 
         // Return financial information
         return new Double[]{paycheck, savings, expenses, remAfterNec};

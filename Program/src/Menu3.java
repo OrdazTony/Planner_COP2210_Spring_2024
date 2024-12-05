@@ -20,7 +20,7 @@ public class Menu {
             System.out.println("1. Create New User");
             System.out.println("2. Add New Paycheck");
             System.out.println("3. Show Users");
-            System.out.println("4. print financial history: ");
+            System.out.println("4. Print financial history: ");
             System.out.println("5. Quit Program");
             System.out.print("Choose an option: ");
 
@@ -55,9 +55,31 @@ public class Menu {
                 for (int i = 0; i < userList.size(); i++) {
                     User user = userList.users.get(i);
                     if (name == null ? user.getName() == null : name.equals(user.getName())) {
-                        ArrayList<Double> history = user.getFinHistory();
+                        System.out.println("Is it a new month? Type 'Yes' or 'No'.");
+                        String newMonth = scnr.next();
+                        
+                        if ("No".equals(newMonth)) {
+                            ArrayList<Double> history = user.getFinHistory();
                             double remAfterNec = history.get(3);
                             user.editFinHistory(Expenses.ExpInfo2(remAfterNec));
+                            break;
+                        } else if ("Yes".equals(newMonth)) {
+                            System.out.println("What are your credit card payments for the month? ");
+                            double ccp = scnr.nextDouble();
+                            System.out.println("What are your loan payments for the month? ");
+                            double loans = scnr.nextDouble();
+                            System.out.println("What is your rent payment for the month? ");
+                            double rent = scnr.nextDouble();
+                            double necTotal = ccp+loans+rent;
+                            System.out.println("Your monthly necessities cost is $" + necTotal + ".");
+                            scnr.nextLine();
+                            Double[] info = Expenses.ExpInfo(necTotal);
+                            user.editFinHistory(info);
+                            break;
+                        } else {
+                            System.out.println("Invalid input. Please try again.");
+                            break;
+                        }
                         
                     }
                 }
@@ -69,6 +91,7 @@ public class Menu {
                 }
             } else if (choice == 4) {
                 System.out.println("Financial histories of users:");
+                System.out.println("--------------");
                 for (int i = 0; i < userList.size(); i++) {
                     User user = userList.users.get(i);
                     System.out.println("Financial History for " + user.getName() + ":");
@@ -76,6 +99,7 @@ public class Menu {
                     System.out.println("Last paycheck: $" + hist.get(0));
                     System.out.println("Savings: $" + hist.get(1));
                     System.out.println("Remainder until next paycheck: $" + hist.get(2));
+                    System.out.println("--------------");
                         
                 }
             }

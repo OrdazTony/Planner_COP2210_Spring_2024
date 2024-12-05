@@ -1,5 +1,5 @@
 import java.util.ArrayList; //was for future encryption functionality
-//This class was implemented by Anthony
+//This class was implemented by Anthony and John
 public class User {
     private String name;
     private int age;
@@ -36,9 +36,9 @@ public class User {
     }
 
     public void editFinHistory(Double[] paycheck) {
-        double rem = paycheck[0];
+        double rem = paycheck[2];
         double savings = this.FinHistory.get(1) + paycheck[1];
-        double paycheckFinal = paycheck[2];
+        double paycheckFinal = paycheck[0];
         this.FinHistory.remove(2);
         this.FinHistory.add(2, rem);
         this.FinHistory.remove(1);
