@@ -5,12 +5,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private boolean isRunning, while1, while2;
+    private boolean isRunning;
 
     public Menu() {
         isRunning = true;
-        while1 = true;
-        while2 = true;
     }
 
     public void displayMenu() {
@@ -31,98 +29,58 @@ public class Menu {
 
             if (choice == 1) {
                 //basic user info
-                System.out.println("--------------");
                 System.out.println("Please enter your name: ");
                 String name = scnr.nextLine();
-                System.out.println("--------------");
                 System.out.println("Please enter your age: ");
                 int age = scnr.nextInt();
                 User user = new User(name, age);
 
                 //monthly expenses
-                while (while1) {
-                    System.out.println("--------------");
-                    System.out.println("What are your credit card payments for the month? ");
-                    double ccp = scnr.nextDouble();
-                    if (ccp < 0) {         //error checking for negatives
-                        System.out.println("--------------");
-                        System.out.println("Invalid input, please try again.");
-                        continue;
-                    }
-                    System.out.println("--------------");
-                    System.out.println("What are your loan payments for the month? ");
-                    double loans = scnr.nextDouble();
-                    if (loans < 0) {       //error checking for negatives
-                        System.out.println("--------------");
-                        System.out.println("Invalid input, please try again.");
-                        continue;
-                    }
-                    System.out.println("--------------");
-                    System.out.println("What is your rent payment for the month? ");
-                    double rent = scnr.nextDouble();
-                    if (rent < 0) {        //error checking for negatives
-                        System.out.println("--------------");
-                        System.out.println("Invalid input, please try again.");
-                        continue;
-                    }
-                    double necTotal = ccp+loans+rent;
-                    System.out.println("--------------");
-                    System.out.printf("Your monthly necessities cost is $%.2f.%n", necTotal);
-                    scnr.nextLine();
-                    Double[] info = Expenses.ExpInfo(necTotal);
-                    user.setFinHistory(info);
-                    userList.addUser(user);
-                    break;
-                }
+                System.out.println("What are your credit card payments for the month? ");
+                double ccp = scnr.nextDouble();
+                System.out.println("What are your loan payments for the month? ");
+                double loans = scnr.nextDouble();
+                System.out.println("What is your rent payment for the month? ");
+                double rent = scnr.nextDouble();
+                double necTotal = ccp+loans+rent;
+                System.out.println("Your monthly necessities cost is $" + necTotal + ".");
+                scnr.nextLine();
+                Double[] info = Expenses.ExpInfo(necTotal);
+                user.setFinHistory(info);
+                userList.addUser(user);
 
             } else if (choice == 2) {
-                while2 = true;
-                while (while2) {
-                    System.out.println("--------------");
-                    System.out.println("Please enter your name: ");
-                    String name = scnr.next();
-                    for (int i = 0; i < userList.size(); i++) {
-                        User user = userList.users.get(i);
-                        if (name == null ? user.getName() == null : name.equals(user.getName())) {
-                            System.out.println("--------------");
-                            System.out.println("Is it a new month? Type 'Yes' or 'No'.");
-                            String newMonth = scnr.next();
+                System.out.println("Please enter your name: ");
+                String name = scnr.next();
+                for (int i = 0; i < userList.size(); i++) {
+                    User user = userList.users.get(i);
+                    if (name == null ? user.getName() == null : name.equals(user.getName())) {
+                        System.out.println("Is it a new month? Type 'Yes' or 'No'.");
+                        String newMonth = scnr.next();
                         
-                            if ("No".equals(newMonth)) {
-                                ArrayList<Double> history = user.getFinHistory();
-                                double remAfterNec = history.get(3);
-                                user.editFinHistory(Expenses.ExpInfo2(remAfterNec));
-                                while2 = false;
-                                break;
-                            } else if ("Yes".equals(newMonth)) {
-                                System.out.println("--------------");
-                                System.out.println("What are your credit card payments for the month? ");
-                                double ccp = scnr.nextDouble();
-                                System.out.println("--------------");
-                                System.out.println("What are your loan payments for the month? ");
-                                double loans = scnr.nextDouble();
-                                System.out.println("--------------");
-                                System.out.println("What is your rent payment for the month? ");
-                                double rent = scnr.nextDouble();
-                                double necTotal = ccp+loans+rent;
-                                System.out.println("--------------");
-                                System.out.printf("Your monthly necessities cost is $%.2f.%n", necTotal);
-                                scnr.nextLine();
-                                Double[] info = Expenses.ExpInfo(necTotal);
-                                user.editFinHistory(info);
-                                while2 = false;
-                                break;
-                            } else {
-                                System.out.println("--------------");
-                                System.out.println("Invalid input. Please try again.");
-                                break;
-                            }
-                        
+                        if ("No".equals(newMonth)) {
+                            ArrayList<Double> history = user.getFinHistory();
+                            double remAfterNec = history.get(3);
+                            user.editFinHistory(Expenses.ExpInfo2(remAfterNec));
+                            break;
+                        } else if ("Yes".equals(newMonth)) {
+                            System.out.println("What are your credit card payments for the month? ");
+                            double ccp = scnr.nextDouble();
+                            System.out.println("What are your loan payments for the month? ");
+                            double loans = scnr.nextDouble();
+                            System.out.println("What is your rent payment for the month? ");
+                            double rent = scnr.nextDouble();
+                            double necTotal = ccp+loans+rent;
+                            System.out.println("Your monthly necessities cost is $" + necTotal + ".");
+                            scnr.nextLine();
+                            Double[] info = Expenses.ExpInfo(necTotal);
+                            user.editFinHistory(info);
+                            break;
+                        } else {
+                            System.out.println("Invalid input. Please try again.");
+                            break;
                         }
-                    }
-                    if (while2 == true) {
-                        System.out.println("--------------");
-                        System.out.println("There is no user under that name, please try again.");
+                        
                     }
                 }
 
@@ -138,9 +96,9 @@ public class Menu {
                     User user = userList.users.get(i);
                     System.out.println("Financial History for " + user.getName() + ":");
                     ArrayList<Double> hist = user.getFinHistory();
-                    System.out.printf("Last paycheck: $%.2f%n", hist.get(0));
-                    System.out.printf("Savings: $%.2f%n", hist.get(1));
-                    System.out.printf("Remainder until next paycheck: $%.2f%n", hist.get(2));
+                    System.out.println("Last paycheck: $" + hist.get(0));
+                    System.out.println("Savings: $" + hist.get(1));
+                    System.out.println("Remainder until next paycheck: $" + hist.get(2));
                     System.out.println("--------------");
                         
                 }
